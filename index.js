@@ -9,24 +9,24 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 
-// mongoose.connect(process.env.MONGODB_URL || 'mongodb://localhost/amazona', {
-//     useNewUrlParser: true,
-//     useUnifiedTopology: true,
-//     useCreateIndex: true,
-// });
-
-mongoose.connect('mongodb://localhost:27017/amazona',
-  {
+mongoose.connect(process.env.MONGODB_URL || 'mongodb://localhost/amazona', {
     useNewUrlParser: true,
-    // useFindAndModify: false,
-    useUnifiedTopology: true
-  }
-);
+    useUnifiedTopology: true,
+    useCreateIndex: true,
+});
+
+// mongoose.connect('mongodb+srv://user_1:sunil9821@jio.xpshj.mongodb.net/?retryWrites=true&w=majority',
+//   {
+//     useNewUrlParser: true,
+//     // useFindAndModify: false,
+//     useUnifiedTopology: true
+//   }
+// );
 
 app.use('/api/users', UserRoute)
 
 
-const PORT = process.env.PORT || 4000;
+const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
     console.log(`API STARTED ON ${PORT}`);
 })
